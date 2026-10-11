@@ -1,0 +1,29 @@
+{
+  "manifest_version": 3,
+  "name": "LOOP virtual microphone",
+  "version": "1.1.0",
+  "description": "Replaces the microphone in browser conference tabs with looped audio files.",
+  "minimum_chrome_version": "111",
+  "permissions": ["storage", "unlimitedStorage", "activeTab", "tabs"],
+  "action": {
+    "default_popup": "popup.html",
+    "default_title": "LOOP virtual microphone"
+  },
+  "content_scripts": [
+    {
+      "matches": ["<all_urls>"],
+      "js": ["inject.js"],
+      "run_at": "document_start",
+      "all_frames": true,
+      "match_about_blank": true,
+      "world": "MAIN"
+    },
+    {
+      "matches": ["<all_urls>"],
+      "js": ["content.js"],
+      "run_at": "document_start",
+      "all_frames": true,
+      "match_about_blank": true
+    }
+  ]
+}

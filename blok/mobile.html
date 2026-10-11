@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>LOOP · mobile</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<main>
+  <h1>LOOP</h1>
+  <section>
+    <h2>Mobile (Android or iPhone)</h2>
+    <p class="hint">Phones cannot use extensions or virtual cables. Instead, a bookmark you tap <b>on the conference page, before joining the call</b> swaps the microphone for your audio file.</p>
+    <div class="row"><button id="copy" class="big">Copy bookmark code</button></div>
+    <p id="msg" class="status"></p>
+  </section>
+  <section>
+    <h2>One-time setup</h2>
+    <ol class="steps">
+      <li>Tap <b>Copy bookmark code</b>.</li>
+      <li>Bookmark any page (Chrome: ⋮ → ☆. Safari: Share → Add Bookmark).</li>
+      <li>Edit that bookmark: name it <b>LOOP</b>, replace its address with the copied code.</li>
+    </ol>
+  </section>
+  <section>
+    <h2>Each time</h2>
+    <ol class="steps">
+      <li>Open the conference link (Meet, Teams, Zoom web, Jitsi...) but do <b>not</b> join yet.</li>
+      <li>Open the bookmark LOOP (Chrome Android: type <b>LOOP</b> in the address bar and tap the bookmark suggestion; Safari: open Bookmarks and tap it).</li>
+      <li>A black bar appears at the bottom. Tap <b>AUDIO</b>, choose your file(s). ⏸ / ▶ pauses and resumes. Tap ⚙ for mode (play once / loop selected / loop playlist / shuffle), gap, volume, voices (1–7, layers an echoing chorus of the same message), which microphone to replace, and "hear it locally".</li>
+      <li>Join the call. The microphone is the audio file.</li>
+    </ol>
+    <p class="hint">Reloading the page removes the bar: tap the bookmark again. Some sites block bookmarklets; if nothing appears, try another browser (Firefox, Safari, Chrome).</p>
+  </section>
+  <section>
+    <h2>Code</h2>
+    <textarea id="code" readonly rows="4" style="width:100%;background:#000;color:#777;border:1px solid #333;font:11px monospace"></textarea>
+  </section>
+</main>
+<style>.steps{padding-left:20px;margin:0}.steps li{display:list-item;border:0;cursor:default;padding:4px 0}</style>
+<script>
+fetch("bookmarklet.js").then(function (r) { return r.text(); }).then(function (t) {
+  var url = "javascript:" + encodeURIComponent(t.replace(/\s*\n\s*/g, " "));
+  document.getElementById("code").value = url;
+  document.getElementById("copy").onclick = function () {
+    var done = function () { document.getElementById("msg").textContent = "Copied."; };
+    var fail = function () { var c = document.getElementById("code"); c.focus(); c.select(); document.getElementById("msg").textContent = "Select the code below and copy it."; };
+    if (navigator.clipboard) navigator.clipboard.writeText(url).then(done, fail); else fail();
+  };
+});
+</script>
+</body>
+</html>

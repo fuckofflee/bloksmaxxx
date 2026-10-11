@@ -1,0 +1,25 @@
+*{box-sizing:border-box}
+body{width:320px;margin:0;padding:16px;background:#000;color:#eee;font:13px/1.5 ui-monospace,Menlo,Consolas,monospace}
+h1{margin:0 0 12px;font-weight:400;letter-spacing:.4em;font-size:16px}
+h2{margin:18px 0 6px;font-size:11px;font-weight:400;color:#777;text-transform:uppercase;letter-spacing:.15em}
+.hint{margin:6px 0 0;color:#777;font-size:11px}
+button,select,input[type=number]{background:#000;color:#eee;border:1px solid #333;padding:7px 9px;font:inherit;border-radius:0}
+button:hover,select:hover{border-color:#fff}
+.power{width:100%;padding:12px;cursor:pointer;letter-spacing:.2em}
+.power.on{background:#eee;color:#000}
+#drop{display:block;border:1px dashed #333;padding:12px;text-align:center;color:#777;cursor:pointer}
+#drop:hover{border-color:#fff;color:#eee}
+ol{list-style:none;margin:6px 0 0;padding:0;max-height:140px;overflow:auto}
+li{display:flex;align-items:center;gap:6px;padding:5px 6px;border-bottom:1px solid #333;cursor:pointer}
+li .n{flex:1;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+li.sel{background:#181818}
+li.sel .n::before{content:"▸ "}
+li button{border:0;padding:0 6px;color:#777;cursor:pointer}
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+label{display:flex;flex-direction:column;gap:3px;color:#777;font-size:11px}
+select,input[type=number]{width:100%}
+.range{margin-top:10px;position:relative}
+.range span{position:absolute;right:0;top:0;color:#ccc}
+input[type=range]{width:100%;accent-color:#fff}
+#dest{word-break:break-all}
+.chk{flex-direction:row;align-items:center;gap:6px;margin-top:12px;color:#aaa;font-size:12px}

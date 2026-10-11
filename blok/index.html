@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>LOOP</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<main>
+  <h1>LOOP</h1>
+  <p class="hint">Want Teams, Zoom or Meet to see your audio file as the microphone, with no virtual cable? Install the <code>extension/</code> folder (see README). The tool below is the cable-based alternative.</p>
+
+  <section>
+    <h2>1 · Output</h2>
+    <p class="hint">Pick the virtual audio cable (VB-Cable, BlackHole, Loopback, PipeWire sink). Then pick the same cable as microphone in the conference tab.</p>
+    <div class="row">
+      <select id="device" aria-label="Output device"></select>
+      <button id="detect" title="Grants a one-time mic permission so device names appear">Detect devices</button>
+    </div>
+    <p id="devStatus" class="status"></p>
+  </section>
+
+  <section>
+    <h2>2 · Messages</h2>
+    <label id="drop" for="files">Drop audio files here or click to add</label>
+    <input id="files" type="file" accept="audio/*" multiple hidden>
+    <ol id="list"></ol>
+  </section>
+
+  <section>
+    <h2>3 · Play</h2>
+    <div class="row">
+      <button id="play" class="big">▶ Start</button>
+      <button id="stop" class="big">■ Stop</button>
+    </div>
+    <div class="grid">
+      <label>Mode
+        <select id="mode">
+          <option value="all">Loop playlist</option>
+          <option value="one">Loop selected</option>
+          <option value="shuffle">Shuffle</option>
+        </select>
+      </label>
+      <label>Gap (s)
+        <input id="gap" type="number" min="0" step="0.5" value="0">
+      </label>
+      <label>Volume
+        <input id="vol" type="range" min="0" max="1.5" step="0.01" value="1">
+      </label>
+    </div>
+    <div id="meter"><div id="bar"></div></div>
+    <p id="status" class="status">Idle</p>
+  </section>
+</main>
+<audio id="out" hidden></audio>
+<script src="app.js"></script>
+</body>
+</html>

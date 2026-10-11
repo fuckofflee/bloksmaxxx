@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<link rel="stylesheet" href="popup.css">
+</head>
+<body>
+  <h1>LOOP</h1>
+  <button id="power" class="power">OFF</button>
+  <button id="pp" class="power" style="margin-top:6px">⏸ Pause</button>
+  <p class="hint">Reload the conference tab after switching ON or OFF.</p>
+
+  <h2>Destination</h2>
+  <p id="dest" class="hint">Checking this tab…</p>
+
+  <h2>Messages</h2>
+  <label id="drop" for="files">Add audio files</label>
+  <input id="files" type="file" accept="audio/*" multiple hidden>
+  <ol id="list"></ol>
+  <p id="size" class="hint"></p>
+
+  <h2>Playback</h2>
+  <div class="grid">
+    <label>Mode
+      <select id="mode">
+        <option value="once">Play once</option>
+        <option value="one">Loop selected</option>
+        <option value="all">Loop playlist</option>
+        <option value="shuffle">Shuffle</option>
+      </select>
+    </label>
+    <label>Gap (s)
+      <input id="gap" type="number" min="0" step="0.5" value="0">
+    </label>
+  </div>
+
+  <label class="range">Volume <span id="volVal">100%</span>
+    <input id="vol" type="range" min="0" max="1.5" step="0.01" value="1">
+  </label>
+  <label class="range">Voices (echo) <span id="voicesVal">1</span>
+    <input id="voices" type="range" min="1" max="7" step="1" value="1">
+  </label>
+
+  <h2>Input</h2>
+  <label>Replace
+    <select id="inputFilter">
+      <option value="all">All microphones</option>
+      <option value="default">Default microphone only</option>
+    </select>
+  </label>
+
+  <label class="chk"><input id="monitor" type="checkbox"> Hear it locally (does not stop the mic)</label>
+  <script src="popup.js"></script>
+</body>
+</html>
